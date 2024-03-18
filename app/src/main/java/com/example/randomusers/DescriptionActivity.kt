@@ -26,6 +26,10 @@ class DescriptionActivity : AppCompatActivity() {
             val textView : TextView = findViewById(R.id.textView)
             val textView2 : TextView = findViewById(R.id.textView2)
             val textView3 : TextView = findViewById(R.id.textView3)
+            val textView4 : TextView = findViewById(R.id.textView4)
+            val textView5 : TextView = findViewById(R.id.textView5)
+            val textView6 : TextView = findViewById(R.id.textView6)
+            val textView7 : TextView = findViewById(R.id.textView7)
 
             Picasso.get()
                 .load(user.image) // Передаем URL изображения
@@ -36,6 +40,10 @@ class DescriptionActivity : AppCompatActivity() {
             textView.text = user.name
             textView2.text = user.address
             textView3.text = user.phone
+            textView4.text = user.gender
+            textView5.text = user.email
+            textView6.text = user.username
+            textView7.text = user.birthday
         }
 
     }

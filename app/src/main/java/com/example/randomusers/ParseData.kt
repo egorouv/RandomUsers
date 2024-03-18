@@ -40,7 +40,17 @@ class ParseData {
                         val pictureObject = userObject.getJSONObject("picture")
                         val image = pictureObject.getString("large")
 
-                        users.add(User(image, name, address, phone))
+                        val gender = userObject.getString("gender")
+
+                        val email = userObject.getString("email")
+
+                        val usernameObject = userObject.getJSONObject("login")
+                        val username = usernameObject.getString("username")
+
+                        val birthdayObject = userObject.getJSONObject("dob")
+                        val birthday = birthdayObject.getString("date")
+
+                        users.add(User(image, name, address, phone, gender, email, username, birthday))
                         //users.add(User(name, address, phone))
                         //Log.i(TAG, "$name $address $phone")
                     }
