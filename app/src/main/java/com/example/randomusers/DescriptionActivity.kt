@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.squareup.picasso.Picasso
 
 class DescriptionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,12 @@ class DescriptionActivity : AppCompatActivity() {
             val textView2 : TextView = findViewById(R.id.textView2)
             val textView3 : TextView = findViewById(R.id.textView3)
 
-            imageView2.setImageResource(user.image)
+            Picasso.get()
+                .load(user.image) // Передаем URL изображения
+                //.placeholder(R.drawable.placeholder) // Опционально: устанавливаем placeholder (заглушку)
+                //.error(R.drawable.error) // Опционально: устанавливаем изображение для случая ошибки загрузки
+                .into(imageView2) // Указываем ImageView, в который нужно загрузить изображение
+
             textView.text = user.name
             textView2.text = user.address
             textView3.text = user.phone
