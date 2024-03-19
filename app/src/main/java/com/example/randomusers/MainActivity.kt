@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 Log.e(TAG, "API request failed: $error")
                 runOnUiThread {
                     Toast.makeText(applicationContext,
-                        "Проверьте подключение к Интернету и повторите попытку.",
+                        "Check your Internet connection and try again.",
                         Toast.LENGTH_LONG).show()
                 }
             }
