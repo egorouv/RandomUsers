@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -66,6 +67,11 @@ class MainActivity : AppCompatActivity() {
 
             override fun onDataParseFailed(error: String) {
                 Log.e(TAG, "API request failed: $error")
+                runOnUiThread {
+                    Toast.makeText(applicationContext,
+                        "Проверьте подключение к Интернету и повторите попытку.",
+                        Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

@@ -26,7 +26,7 @@ class ParseData {
                         val userObject = resultsArray.getJSONObject(i)
 
                         val nameObject = userObject.getJSONObject("name")
-                        val name = "${nameObject.getString("title")} ${nameObject.getString("first")} ${nameObject.getString("last")}"
+                        val name = "${nameObject.getString("first")} ${nameObject.getString("last")}"
 
                         val addressObject = userObject.getJSONObject("location").getJSONObject("street")
                         val address = "${addressObject.getInt("number")} ${addressObject.getString("name")}, " +
@@ -47,10 +47,10 @@ class ParseData {
                         val usernameObject = userObject.getJSONObject("login")
                         val username = usernameObject.getString("username")
 
-                        val birthdayObject = userObject.getJSONObject("dob")
-                        val birthday = birthdayObject.getString("date")
+                        val ageObject = userObject.getJSONObject("dob")
+                        val age = ageObject.getString("age")
 
-                        users.add(User(image, name, address, phone, gender, email, username, birthday))
+                        users.add(User(image, name, address, phone, gender, email, username, age))
                         //users.add(User(name, address, phone))
                         //Log.i(TAG, "$name $address $phone")
                     }
