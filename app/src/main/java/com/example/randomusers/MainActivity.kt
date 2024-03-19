@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
+    private lateinit var saveState: SaveState
     private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,25 +26,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        userList = ArrayList()
+        saveState = SaveState(this)
+        userList = ArrayList(saveState.getUserList())
+        //userList = ArrayList()
         userAdapter = UserAdapter(userList)
         recyclerView.adapter = userAdapter
 
-        val parser = ParseData()
-        parser.parseData(object : ParseData.DataCallback {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onDataParsed(users: List<User>) {
-                runOnUiThread {
-                    userList.clear()
-                    userList.addAll(users)
-                    userAdapter.notifyDataSetChanged()
-                }
-            }
-
-            override fun onDataParseFailed(error: String) {
-                Log.e(TAG, "API request failed: $error")
-            }
-        })
+        if (userList.isEmpty()) getDataFromApi()
 
         userAdapter.onItemClick = {
             val intent = Intent(this, DescriptionActivity::class.java)
@@ -52,4 +41,25 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun getDataFromApi() {
+        val parser = ParseData()
+        parser.parseData(object : ParseData.DataCallback {
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataParsed(users: List<User>) {
+                runOnUiThread {
+                    userList.clear()
+                    userList.addAll(users)
+                    userAdapter.notifyDataSetChanged()
+                    saveState.saveUserList(userList)
+                }
+            }
+
+            override fun onDataParseFailed(error: String) {
+                Log.e(TAG, "API request failed: $error")
+            }
+        })
+    }
+
 }
