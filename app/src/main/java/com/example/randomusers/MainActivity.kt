@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,12 +16,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
     private lateinit var saveState: SaveState
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener {
+            getDataFromApi()
+            swipeRefreshLayout.isRefreshing = false
+        }
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
