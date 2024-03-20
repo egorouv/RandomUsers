@@ -1,6 +1,7 @@
-package com.example.randomusers
+package com.example.randomusers.utils
 
 import android.content.Context
+import com.example.randomusers.model.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

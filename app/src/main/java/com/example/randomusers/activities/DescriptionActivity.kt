@@ -1,4 +1,4 @@
-package com.example.randomusers
+package com.example.randomusers.activities
 
 import android.content.Intent
 import android.graphics.Paint
@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.randomusers.R
+import com.example.randomusers.model.User
 import com.squareup.picasso.Picasso
 
 class DescriptionActivity : AppCompatActivity() {

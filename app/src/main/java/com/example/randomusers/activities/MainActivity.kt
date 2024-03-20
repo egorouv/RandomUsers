@@ -1,6 +1,6 @@
-package com.example.randomusers
+package com.example.randomusers.activities
 
-import ParseData
+import com.example.randomusers.utils.ParseData
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.randomusers.R
+import com.example.randomusers.model.User
+import com.example.randomusers.utils.SaveState
+import com.example.randomusers.utils.UserAdapter
 
 class MainActivity : AppCompatActivity() {
 

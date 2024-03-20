@@ -1,4 +1,4 @@
-package com.example.randomusers
+package com.example.randomusers.model
 
 import android.os.Parcel
 import android.os.Parcelable

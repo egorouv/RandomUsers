@@ -1,4 +1,6 @@
-import com.example.randomusers.User
+package com.example.randomusers.utils
+
+import com.example.randomusers.model.User
 import org.json.JSONObject
 
 class ParseData {
