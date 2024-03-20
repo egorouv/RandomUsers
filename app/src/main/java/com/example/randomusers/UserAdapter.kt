@@ -32,17 +32,14 @@ class UserAdapter(private val userList:ArrayList<User>) : RecyclerView.Adapter<U
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
-        //holder.imageView.setImageResource(user.image)
         Picasso.get()
-            .load(user.image) // Передаем URL изображения
-            //.placeholder(R.drawable.ic_launcher_foreground) // Опционально: устанавливаем placeholder (заглушку)
-            //.error(R.drawable.error) // Опционально: устанавливаем изображение для случая ошибки загрузки
-            .into(holder.imageView) // Указываем ImageView, в который нужно загрузить изображение
+            .load(user.image)
+            .into(holder.imageView)
         holder.nameTextView.text = user.name
         holder.addressTextView.text = user.address
         holder.phoneTextView.text = user.phone
 
-        holder.itemView.setOnClickListener() {
+        holder.itemView.setOnClickListener {
             onItemClick?.invoke(user)
         }
     }

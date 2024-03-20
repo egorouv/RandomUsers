@@ -4,7 +4,6 @@ import ParseData
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +17,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userAdapter: UserAdapter
     private lateinit var saveState: SaveState
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
@@ -37,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         saveState = SaveState(this)
         userList = ArrayList(saveState.getUserList())
-        //userList = ArrayList()
         userAdapter = UserAdapter(userList)
         recyclerView.adapter = userAdapter
 
@@ -66,7 +62,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDataParseFailed(error: String) {
-                Log.e(TAG, "API request failed: $error")
                 runOnUiThread {
                     Toast.makeText(applicationContext,
                         "Check your Internet connection and try again.",
@@ -74,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
     }
 
 }

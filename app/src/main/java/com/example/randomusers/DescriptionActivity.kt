@@ -12,13 +12,7 @@ import com.squareup.picasso.Picasso
 class DescriptionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContentView(R.layout.activity_description)
-        //ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ConstraintLayout)) { v, insets ->
-        //    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-        //    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-        //    insets
-        //}
 
         val user = intent.getParcelableExtra<User>("user")
         if (user != null) {
@@ -32,11 +26,8 @@ class DescriptionActivity : AppCompatActivity() {
             val ageTextView : TextView = findViewById(R.id.ageDescTextView)
 
             Picasso.get()
-                .load(user.image) // Передаем URL изображения
-                //.placeholder(R.drawable.placeholder) // Опционально: устанавливаем placeholder (заглушку)
-                //.error(R.drawable.error) // Опционально: устанавливаем изображение для случая ошибки загрузки
-                .into(imageView) // Указываем ImageView, в который нужно загрузить изображение
-
+                .load(user.image)
+                .into(imageView)
             nameTextView.text = user.name
             addressTextView.text = user.address
             phoneTextView.text = user.phone

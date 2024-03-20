@@ -1,4 +1,3 @@
-import android.util.Log
 import com.example.randomusers.User
 import org.json.JSONObject
 
@@ -10,7 +9,6 @@ class ParseData {
     }
 
     private val apiHandler = ApiHandler()
-    private val TAG = "ParseData"
 
     fun parseData(callback: DataCallback) {
 
@@ -51,8 +49,7 @@ class ParseData {
                         val age = ageObject.getString("age")
 
                         users.add(User(image, name, address, phone, gender, email, username, age))
-                        //users.add(User(name, address, phone))
-                        //Log.i(TAG, "$name $address $phone")
+
                     }
                     callback.onDataParsed(users)
                 } catch (e: Exception) {
